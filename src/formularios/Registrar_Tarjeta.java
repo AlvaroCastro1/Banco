@@ -18,6 +18,8 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
      */
     public Registrar_Tarjeta() {
         initComponents();
+        et_LineaOsaldo.setVisible(false);
+        txt_lienaOsaldo.setVisible(false);
     }
 
     /**
@@ -45,6 +47,8 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
         btn_limpiar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         txt_fehcaSoli = new javax.swing.JTextField();
+        et_LineaOsaldo = new javax.swing.JLabel();
+        txt_lienaOsaldo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +71,11 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
         jLabel7.setText("Propietario:");
 
         cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Credito", "Debito" }));
+        cb_tipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoItemStateChanged(evt);
+            }
+        });
 
         btn_limpiar.setBackground(new java.awt.Color(188, 216, 251));
         btn_limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3808224-broomstick-fly-magic-witch_109093.png"))); // NOI18N
@@ -106,6 +115,8 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
             }
         });
 
+        et_LineaOsaldo.setText("ejemplo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,9 +153,13 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
                             .addComponent(txt_Propietario, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(txt_fehcaSoli)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(37, 37, 37)
-                        .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(et_LineaOsaldo))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_tipo, 0, 100, Short.MAX_VALUE)
+                            .addComponent(txt_lienaOsaldo))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -178,7 +193,11 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(txt_CVC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(et_LineaOsaldo)
+                    .addComponent(txt_lienaOsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar)
                     .addComponent(btn_guardar))
@@ -227,13 +246,29 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         if(txt_NumTarjeta.getText().isEmpty() || txt_FechaVenci.getText().isEmpty() ||txt_CVC.getText().isEmpty() || txt_Propietario.getText().isEmpty()
-            || cb_tipo.getSelectedItem() == "Seleccione" || txt_FechaVenci.getText().isEmpty() ){
+            || cb_tipo.getSelectedItem() == "Seleccione" || txt_FechaVenci.getText().isEmpty() || txt_lienaOsaldo.getText().isEmpty() ){
             JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
         }else{
             JOptionPane.showMessageDialog(null, "BIEN");
             //guardar datos
         }
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void cb_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoItemStateChanged
+        
+        if (cb_tipo.getSelectedItem()== "Credito") {
+            et_LineaOsaldo.setText("Linea de saldo:");
+            et_LineaOsaldo.setVisible(true);
+            txt_lienaOsaldo.setVisible(true);
+        }else if(cb_tipo.getSelectedItem()== "Seleccione"){
+            et_LineaOsaldo.setVisible(false);
+            txt_lienaOsaldo.setVisible(false);
+        }else{
+            et_LineaOsaldo.setText("Saldo inicial:");
+            et_LineaOsaldo.setVisible(true);
+            txt_lienaOsaldo.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_tipoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -274,6 +309,7 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JComboBox<String> cb_tipo;
+    private javax.swing.JLabel et_LineaOsaldo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,5 +323,6 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     private javax.swing.JTextField txt_NumTarjeta;
     private javax.swing.JTextField txt_Propietario;
     private javax.swing.JTextField txt_fehcaSoli;
+    private javax.swing.JTextField txt_lienaOsaldo;
     // End of variables declaration//GEN-END:variables
 }
