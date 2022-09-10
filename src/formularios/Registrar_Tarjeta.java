@@ -18,8 +18,10 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
      */
     public Registrar_Tarjeta() {
         initComponents();
+        this.setLocationRelativeTo(null);
         et_LineaOsaldo.setVisible(false);
         txt_lienaOsaldo.setVisible(false);
+        
     }
 
     /**
@@ -50,7 +52,12 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
         et_LineaOsaldo = new javax.swing.JLabel();
         txt_lienaOsaldo = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(188, 216, 251));
 
@@ -269,6 +276,12 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
             txt_lienaOsaldo.setVisible(true);
         }
     }//GEN-LAST:event_cb_tipoItemStateChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Menu m = new Menu();
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
