@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package fromularios;
+package formularios;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Alvaro
@@ -102,6 +103,11 @@ public class Registrar_Usuario extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_guardarMouseExited(evt);
+            }
+        });
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
             }
         });
 
@@ -228,6 +234,16 @@ public class Registrar_Usuario extends javax.swing.JFrame {
     private void btn_guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseExited
         btn_guardar.setBackground(new Color (184,253,153));
     }//GEN-LAST:event_btn_guardarMouseExited
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        if(txt_nombre.getText().isEmpty() || txt_APP.getText().isEmpty() ||txt_APM.getText().isEmpty() || txt_Ingreso.getText().isEmpty()
+                || txt_Direccion.getText().isEmpty() || txt_RFC.getText().isEmpty() || cb_sexo.getSelectedItem() == "Seleccione" || dc_fechaN.getDate() == null){
+            JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
+        }else{
+            JOptionPane.showMessageDialog(null, "BIEN");
+            //guardar datos
+        }
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**
      * @param args the command line arguments
