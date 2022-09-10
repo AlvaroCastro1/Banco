@@ -1,4 +1,5 @@
 # Porfavor APRENDE A USAR GIT Y CLOANAME!!!!
+## EJECUTAR SOLO EL MENU!!!
 
 agrega tus cambios y ejecuta desde NETBEANS
 
