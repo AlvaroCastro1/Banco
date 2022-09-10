@@ -39,12 +39,12 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_NumTarjeta = new javax.swing.JTextField();
         txt_FechaVenci = new javax.swing.JTextField();
-        dc_fechaSoli = new com.toedter.calendar.JDateChooser();
         cb_tipo = new javax.swing.JComboBox<>();
         txt_CVC = new javax.swing.JTextField();
         txt_Propietario = new javax.swing.JTextField();
         btn_limpiar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
+        txt_fehcaSoli = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,8 +139,8 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dc_fechaSoli, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txt_Propietario)))
+                            .addComponent(txt_Propietario, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(txt_fehcaSoli)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(37, 37, 37)
@@ -152,13 +152,13 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(69, 69, 69)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(dc_fechaSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txt_fehcaSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(txt_Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,7 +213,7 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
         txt_CVC.setText("");
         txt_Propietario.setText("");
         cb_tipo.setSelectedIndex(0);
-        dc_fechaSoli.setDate(null);
+        txt_FechaVenci.setText("");
 
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
@@ -227,7 +227,7 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         if(txt_NumTarjeta.getText().isEmpty() || txt_FechaVenci.getText().isEmpty() ||txt_CVC.getText().isEmpty() || txt_Propietario.getText().isEmpty()
-            || cb_tipo.getSelectedItem() == "Seleccione" || dc_fechaSoli.getDate() == null){
+            || cb_tipo.getSelectedItem() == "Seleccione" || txt_FechaVenci.getText().isEmpty() ){
             JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
         }else{
             JOptionPane.showMessageDialog(null, "BIEN");
@@ -274,7 +274,6 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JComboBox<String> cb_tipo;
-    private com.toedter.calendar.JDateChooser dc_fechaSoli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,5 +286,6 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     private javax.swing.JTextField txt_FechaVenci;
     private javax.swing.JTextField txt_NumTarjeta;
     private javax.swing.JTextField txt_Propietario;
+    private javax.swing.JTextField txt_fehcaSoli;
     // End of variables declaration//GEN-END:variables
 }
