@@ -32,6 +32,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_UserNuevo = new javax.swing.JButton();
         btn_TarjetaNueva = new javax.swing.JButton();
+        btn_ConsultaS = new javax.swing.JButton();
+        btn_EliminarTarjeta = new javax.swing.JButton();
+        btn_P = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,20 +82,86 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btn_ConsultaS.setBackground(new java.awt.Color(255, 221, 140));
+        btn_ConsultaS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carduse_card_payment_5122.png"))); // NOI18N
+        btn_ConsultaS.setText("Consultar saldo");
+        btn_ConsultaS.setBorderPainted(false);
+        btn_ConsultaS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ConsultaS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_ConsultaSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_ConsultaSMouseExited(evt);
+            }
+        });
+        btn_ConsultaS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ConsultaSActionPerformed(evt);
+            }
+        });
+
+        btn_EliminarTarjeta.setBackground(new java.awt.Color(255, 221, 140));
+        btn_EliminarTarjeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelcreditcard_120838.png"))); // NOI18N
+        btn_EliminarTarjeta.setText("Eliminar Tarjeta");
+        btn_EliminarTarjeta.setBorderPainted(false);
+        btn_EliminarTarjeta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_EliminarTarjeta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_EliminarTarjetaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_EliminarTarjetaMouseExited(evt);
+            }
+        });
+        btn_EliminarTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarTarjetaActionPerformed(evt);
+            }
+        });
+
+        btn_P.setBackground(new java.awt.Color(255, 221, 140));
+        btn_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/976604-appliances-cell-phone-cellphone-mobile-mobilephone-phone-smartphone_106569.png"))); // NOI18N
+        btn_P.setText("Pendiente");
+        btn_P.setBorderPainted(false);
+        btn_P.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_PMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_PMouseExited(evt);
+            }
+        });
+        btn_P.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addComponent(btn_UserNuevo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_UserNuevo)
+                    .addComponent(btn_ConsultaS))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                .addComponent(btn_TarjetaNueva)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_TarjetaNueva)
+                    .addComponent(btn_EliminarTarjeta))
                 .addGap(84, 84, 84))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(btn_P)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +172,13 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_UserNuevo)
                     .addComponent(btn_TarjetaNueva))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_ConsultaS)
+                    .addComponent(btn_EliminarTarjeta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btn_P)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,7 +210,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_UserNuevoActionPerformed
 
     private void btn_TarjetaNuevaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaMouseEntered
-        btn_TarjetaNueva.setBackground(new Color (127,196,154));
+        btn_TarjetaNueva.setBackground(new Color (98,153,122));
     }//GEN-LAST:event_btn_TarjetaNuevaMouseEntered
 
     private void btn_TarjetaNuevaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaMouseExited
@@ -148,6 +223,42 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_TarjetaNuevaActionPerformed
 
+    private void btn_ConsultaSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultaSMouseEntered
+        btn_ConsultaS.setBackground(new Color (98,153,122));
+    }//GEN-LAST:event_btn_ConsultaSMouseEntered
+
+    private void btn_ConsultaSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultaSMouseExited
+        btn_ConsultaS.setBackground(new Color (255,221,140));
+    }//GEN-LAST:event_btn_ConsultaSMouseExited
+
+    private void btn_ConsultaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultaSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ConsultaSActionPerformed
+
+    private void btn_EliminarTarjetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseEntered
+        btn_EliminarTarjeta.setBackground(new Color (98,153,122));
+    }//GEN-LAST:event_btn_EliminarTarjetaMouseEntered
+
+    private void btn_EliminarTarjetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseExited
+        btn_EliminarTarjeta.setBackground(new Color (255,221,140));
+    }//GEN-LAST:event_btn_EliminarTarjetaMouseExited
+
+    private void btn_EliminarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_EliminarTarjetaActionPerformed
+
+    private void btn_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PMouseEntered
+        btn_P.setBackground(new Color (98,153,122));
+    }//GEN-LAST:event_btn_PMouseEntered
+
+    private void btn_PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PMouseExited
+        btn_P.setBackground(new Color (255,221,140));
+    }//GEN-LAST:event_btn_PMouseExited
+
+    private void btn_PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_PActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,7 +270,7 @@ public class Menu extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Linux".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -184,6 +295,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_ConsultaS;
+    private javax.swing.JButton btn_EliminarTarjeta;
+    private javax.swing.JButton btn_P;
     private javax.swing.JButton btn_TarjetaNueva;
     private javax.swing.JButton btn_UserNuevo;
     private javax.swing.JLabel jLabel1;
