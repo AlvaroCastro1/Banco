@@ -7,23 +7,45 @@ import java.util.LinkedList;
 
 
 public class Registrar_Tarjeta extends javax.swing.JFrame {
-        LinkedList Cliente = new LinkedList();
+        Cliente[] Cliente = new Cliente[5000];
+        int id;
+        int marcador;
     
-    public Registrar_Tarjeta( LinkedList Cliente) {
+    public Registrar_Tarjeta( Cliente[] Cliente, int id) {
+        this.id=id;
         this.Cliente= Cliente;
         initComponents();
         this.setLocationRelativeTo(null);
         et_LineaOsaldo.setVisible(false);
         txt_lienaOsaldo.setVisible(false);
+        
+        
+    }
+    public boolean BuscarUsuario(){
+        int BCuenta =Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la cuenta"));
+        int BContra=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la Contraseña"));
+        for(int i=0;i<id; i++){
+            if(BCuenta==Cliente[i].getNoCuenta() || BContra==Cliente[i].getContrasenia()){
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña son correctos"); 
+                marcador=i;
+                return true;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "El cliente o la contraseña son erroneos o no se encuentran, vuelvalo a intentar o registrese");
+            }
+        }
+            return false;
     }
 
     private Registrar_Tarjeta() {
         initComponents();
+        BuscarUsuario();
         this.setLocationRelativeTo(null);
         et_LineaOsaldo.setVisible(false);
         txt_lienaOsaldo.setVisible(false);
       
     }
+   
 
 
     @SuppressWarnings("unchecked")
@@ -270,13 +292,16 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
             if(cb_tipo.getSelectedItem()=="Credito"){
                 Credito c1 = new Credito(txt_NumTarjeta.getText(),txt_FechaVenci.getText(),txt_CVC.getText(),txt_fehcaSoli.getText(),txt_Propietario.getText(),
                 (String)cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
-                System.out.println(c1);
+                Cliente[marcador].LlenarTarjeta(c1);
+                System.out.println(Cliente[marcador].toString());
+  
             }
             if(cb_tipo.getSelectedItem()=="Debito"){
                  Debito d1 = new Debito(txt_NumTarjeta.getText(),txt_FechaVenci.getText(),txt_CVC.getText(),txt_fehcaSoli.getText(),txt_Propietario.getText(),
                 (String)cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
-                 
-                System.out.println(d1);
+                Cliente[marcador].LlenarTarjeta(d1);
+                System.out.println(Cliente[marcador].toString());
+                
             }
             JOptionPane.showMessageDialog(null, "TA BIEN");
             Limpiar();
@@ -301,7 +326,7 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_tipoItemStateChanged
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Menu m = new Menu(Cliente);
+        Menu m = new Menu(Cliente, id);
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_formWindowClosing

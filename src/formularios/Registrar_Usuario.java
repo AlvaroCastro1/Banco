@@ -6,11 +6,13 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 public class Registrar_Usuario extends javax.swing.JFrame {
-    LinkedList Cliente = new LinkedList();
-    Cliente c1;
+    private Cliente[] Cliente = new Cliente[5000];
+    private Cliente c1;
+    private int id;
 
 
-    public Registrar_Usuario( LinkedList Cliente) {
+    public Registrar_Usuario( Cliente[] Cliente, int id) {
+        this.id= id;
         this.Cliente=Cliente;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -21,6 +23,8 @@ public class Registrar_Usuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     
     }
+
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -231,7 +235,7 @@ public class Registrar_Usuario extends javax.swing.JFrame {
     private void btn_limpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarMouseEntered
         btn_limpiar.setBackground(new Color (127,196,154));
     }//GEN-LAST:event_btn_limpiarMouseEntered
-public void Limpiar(){
+    public void Limpiar(){
         txt_nombre.setText("");
         txt_APP.setText("");
         txt_APM.setText("");
@@ -240,7 +244,12 @@ public void Limpiar(){
         txt_RFC.setText("");
         cb_sexo.setSelectedIndex(0);
         txt_Fecha_N.setText("");
-}
+    }   
+    public void Imprimir(){
+        for(int i=0; i<id; i++){
+            System.out.println(Cliente[i].toString());
+        }
+    }
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
     Limpiar();
     }//GEN-LAST:event_btn_limpiarActionPerformed
@@ -262,19 +271,27 @@ public void Limpiar(){
                 || txt_Direccion.getText().isEmpty() || txt_RFC.getText().isEmpty() || cb_sexo.getSelectedItem() == "Seleccione" || txt_Fecha_N.getText() == null){
             JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
         }else{
+            //crea objeto tipo cliente con los sig parametros
             c1 = new Cliente(txt_nombre.getText(),txt_APP.getText(),txt_APM.getText(), (String) cb_sexo.getSelectedItem(),txt_Fecha_N.getText(),txt_Ingreso.getText(),txt_Direccion.getText(),txt_RFC.getText());
-            Cliente.add(c1);
+            //Agrega cliente a un arreglo
+            Cliente[id]=c1;
+            id++;
             JOptionPane.showMessageDialog(null, "TA BIEN");
-            System.out.println(Cliente);
+            JOptionPane.showMessageDialog(null, c1.getCuenta());
+            Limpiar(); 
+            Imprimir();
+            //abre una ventana para registrar una targeta 
+            /* Menu m = new Menu(Cliente, id);
+            m.setVisible(true);
+            this.setVisible(false);*/
            
         }
-        Limpiar();     
             //guardar datos
         
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Menu m = new Menu(Cliente);
+        Menu m = new Menu(Cliente, id);
         m.setVisible(true);
         this.setVisible(false);
         

@@ -4,10 +4,20 @@ package formularios;
 
 public class Cuenta {
     private int noCuenta;
-    
-    public Cuenta(){
+    private int contrasenia;
+
+     public Cuenta(){
         System.out.println("Creando cuenta...");
-        noCuenta= noCuenta+1;
+        noCuenta=(int) (Math.random()*100000);
+        contrasenia=(int) (Math.random()*100000);
+    }
+    
+    public int getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(int contraseña) {
+        this.contrasenia = contraseña;
     }
 
     public int getNoCuenta() {
@@ -22,6 +32,8 @@ public class Cuenta {
     public String toString() {
         String cad="\n";
         cad+="\nNumero de cuenta: "+getNoCuenta();
+        cad+="\nContraseña: "+getContrasenia();
+        cad+="\n";
         return cad; 
     }
     

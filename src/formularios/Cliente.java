@@ -24,10 +24,15 @@ public class Cliente {
         //Al crear nuestro Cliente se crea una cuenta (Composición)
         cuenta= new Cuenta();    
     }
-   public void LlenarTarjeta(Tarjetas tar){
+    public void LlenarTarjeta(Tarjetas tar){
        tarjeta[i]=tar;
-       i=i++;
-   }
+       i++;
+    }
+    public void ImprimirTarjetas(){
+        for(int j=0;j<i; j++){
+            System.out.println(tarjeta[j]);
+        }
+    }
     public Tarjetas[] getTarjeta() {
         return tarjeta;
     }
@@ -37,8 +42,14 @@ public class Cliente {
     }
     
     
-    public Cuenta getCuenta() {
-        return cuenta;
+    public String getCuenta() {
+        return cuenta.toString();
+    }
+    public int getContrasenia(){
+        return cuenta.getContrasenia();
+    }
+    public int getNoCuenta(){
+        return cuenta.getNoCuenta();
     }
     public String getNombres() {
         return nombres;
@@ -106,7 +117,7 @@ public class Cliente {
 
     
     public String toString() {
-        String cad="Cliente";
+        String cad="\nCliente";
         cad+="Numero de cuenta: "+cuenta.toString();
         cad+="\nNombre: "+getNombres();
         cad+="\nApellido Paterno: "+getApellidoP();
@@ -116,12 +127,16 @@ public class Cliente {
         cad+="\nIngreso Mensual: "+getIngresoMens();
         cad+="\nDirección: "+getDireccion();
         cad+="\nRFC: "+getRfc();
-       /* if(tarjeta!=null){
-            for(int i=0;i<tarjeta.length;i++){
-                cad+="\n"+tarjeta[i].toString();
-            }*/
-       return cad;
-        }
-  
+        cad+="\n" ;
+            if(tarjeta!=null){
+               for(int j=0;j<i; j++){
+                   cad+="\nTarjetas: "+tarjeta[j].toString();
+               }
+            }
+            else{
+                cad+="\nTarjetas: sin tarjetas";
+            }
+        return cad;
     }
+}
 

@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
-    LinkedList Cliente;
+    Cliente[] Cliente= new Cliente[5000];
+    int id;
     
-    public Menu(LinkedList Cliente) {
+    public Menu(Cliente[] Cliente, int id) {
+        this.id= id;
         this.Cliente= Cliente;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -17,7 +19,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,7 +205,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_UserNuevoMouseExited
 
     private void btn_UserNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UserNuevoActionPerformed
-        Registrar_Usuario ru = new Registrar_Usuario(Cliente);
+        Registrar_Usuario ru = new Registrar_Usuario(Cliente, id);
         ru.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_UserNuevoActionPerformed
@@ -217,9 +219,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TarjetaNuevaMouseExited
 
     private void btn_TarjetaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaActionPerformed
-        Registrar_Tarjeta r = new Registrar_Tarjeta(Cliente);
-        r.setVisible(true);
-        this.setVisible(false);
+        Registrar_Tarjeta r = new Registrar_Tarjeta(Cliente, id);
+        if(r.BuscarUsuario()==false){
+            r.setVisible(false);
+            this.setVisible(true);
+        }
+        else{
+            r.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btn_TarjetaNuevaActionPerformed
 
     private void btn_ConsultaSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultaSMouseEntered
