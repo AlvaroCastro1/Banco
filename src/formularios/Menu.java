@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package formularios;
 
 import java.awt.Color;
-/**
- *
- * @author Alvaro
- */
-public class Menu extends javax.swing.JFrame {
+import java.util.LinkedList;
 
-    /**
-     * Creates new form Menu
-     */
-    public Menu() {
+public class Menu extends javax.swing.JFrame {
+    LinkedList Cliente;
+    
+    public Menu(LinkedList Cliente) {
+        this.Cliente= Cliente;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    private Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -204,7 +203,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_UserNuevoMouseExited
 
     private void btn_UserNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UserNuevoActionPerformed
-        Registrar_Usuario ru = new Registrar_Usuario();
+        Registrar_Usuario ru = new Registrar_Usuario(Cliente);
         ru.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_UserNuevoActionPerformed
@@ -218,7 +217,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TarjetaNuevaMouseExited
 
     private void btn_TarjetaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaActionPerformed
-        Registrar_Tarjeta r = new Registrar_Tarjeta();
+        Registrar_Tarjeta r = new Registrar_Tarjeta(Cliente);
         r.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_TarjetaNuevaActionPerformed
