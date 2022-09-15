@@ -184,6 +184,9 @@
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_EliminarTarjetaMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EliminarTarjetaActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Menu_btn_EliminarTarjeta"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btn_P">
           <Properties>

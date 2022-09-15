@@ -1,6 +1,8 @@
 
 package formularios;
 
+import javax.swing.JOptionPane;
+
 
 public class Cliente {
     
@@ -25,8 +27,15 @@ public class Cliente {
         cuenta= new Cuenta();    
     }
     public void LlenarTarjeta(Tarjetas tar){
-       tarjeta[i]=tar;
-       i++;
+        for(i=0;i<tarjeta.length;i++){
+            if(tarjeta[i]==null){
+                tarjeta[i]=tar;
+                break;
+            }
+            else{
+                System.out.println("Has alcanzado el maximo de tarjetas");
+            }
+        }  
     }
     public void ImprimirTarjetas(){
         for(int j=0;j<i; j++){
@@ -36,9 +45,65 @@ public class Cliente {
     public Tarjetas[] getTarjeta() {
         return tarjeta;
     }
+    public void BorrarTarjeta(int i){  
+        tarjeta[i]=null;
+    }
 
     public void setTarjeta(Tarjetas[] tarjeta) {
         this.tarjeta = tarjeta;
+    }
+    public String getNoTarjeta(int i){
+        String cad = null;
+        if(tarjeta[i]!=null){
+            cad=tarjeta[i].getNoTarjeta();
+            return cad;
+        }
+        return "";
+    }
+    public int getLienaOsaldo(int i){
+        int cad = 0;
+        if(tarjeta[i]!=null){
+            cad=tarjeta[i].getLienaOsaldo();
+            return cad;
+        }
+        return 0;
+    }
+    public int getDeuda(int i){
+        int cad = 0;
+        if(tarjeta[i]!=null){
+            cad=tarjeta[i].getDeuda();
+            return cad;
+        }
+        return 0;
+    }
+    
+    public void Cobrar(int i, int cobro){
+        if(tarjeta[i].getTipo()=="Credito"){
+            if(tarjeta[i].getLienaOsaldo()!=0){
+                tarjeta[i].setLienaOsaldo(tarjeta[i].getLienaOsaldo()-cobro);
+                JOptionPane.showMessageDialog(null, "Retirando: "+cobro);
+            }
+            if(tarjeta[i].getLienaOsaldo()==0){
+                JOptionPane.showMessageDialog(null, "No tiene saldo en su tarjeta, no puede cobrar");
+            }
+        }
+        if(tarjeta[i].getTipo()=="Debito"){
+            if(tarjeta[i].getDeuda()==tarjeta[i].getLienaOsaldo()){
+                JOptionPane.showMessageDialog(null, "su tarjeta alcanzó el limite, no puede cobrar mas");
+            }
+            if(tarjeta[i].getDeuda()!=tarjeta[i].getLienaOsaldo()){
+                tarjeta[i].setDeuda(tarjeta[i].getDeuda()+cobro);
+                JOptionPane.showMessageDialog(null, "Retirando: "+cobro);
+            }
+        }
+    }
+    public String getTipo(){
+          String cad = null;
+        if(tarjeta[i]!=null){
+            cad=tarjeta[i].getTipo();
+            return cad;
+        }
+        return "";
     }
     
     
@@ -128,14 +193,16 @@ public class Cliente {
         cad+="\nDirección: "+getDireccion();
         cad+="\nRFC: "+getRfc();
         cad+="\n" ;
-            if(tarjeta!=null){
-               for(int j=0;j<i; j++){
+            for(int j=0;j<tarjeta.length; j++){
+                if(tarjeta[j]==null){
+                    cad+="\n";
+                }
+                if(tarjeta[j]!=null){
                    cad+="\nTarjetas: "+tarjeta[j].toString();
-               }
+                }
             }
-            else{
-                cad+="\nTarjetas: sin tarjetas";
-            }
+            
+
         return cad;
     }
 }

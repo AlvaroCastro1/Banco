@@ -3,10 +3,11 @@ package formularios;
 
 public class Tarjetas {
 
-    String noTarjeta;
-    String fechaV;
-    String cvc;
+    private String noTarjeta;
+    private String fechaV;
+    private String cvc;
     private String fechaS,propietario, tipo;
+    private int lienaOsaldo, deuda;
 
     Tarjetas(String noTarjeta, String fechaV, String cvc, String fechaS, String propietario, String tipo) {
         this.noTarjeta = noTarjeta;
@@ -17,6 +18,22 @@ public class Tarjetas {
         this.tipo = tipo;
     }
 
+    public int getDeuda() {
+        return deuda;
+    }
+
+    public void setDeuda(int deuda) {
+        this.deuda = deuda;
+    }
+
+    public int getLienaOsaldo() {
+        return lienaOsaldo;
+    }
+
+    public void setLienaOsaldo(int lienaOsaldo) {
+        this.lienaOsaldo = lienaOsaldo;
+    }
+    
     public String getTipo() {
         return tipo;
     }

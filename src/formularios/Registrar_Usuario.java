@@ -280,10 +280,7 @@ public class Registrar_Usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, c1.getCuenta());
             Limpiar(); 
             Imprimir();
-            //abre una ventana para registrar una targeta 
-            /* Menu m = new Menu(Cliente, id);
-            m.setVisible(true);
-            this.setVisible(false);*/
+            
            
         }
             //guardar datos

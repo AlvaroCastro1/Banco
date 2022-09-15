@@ -5,9 +5,10 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
+    //arreglo donde se guardan los clientes
     Cliente[] Cliente= new Cliente[5000];
     int id;
-    
+    //constructor que recibe un arreglo de clientes y un indice
     public Menu(Cliente[] Cliente, int id) {
         this.id= id;
         this.Cliente= Cliente;
@@ -15,7 +16,7 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    private Menu() {
+    public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -220,10 +221,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void btn_TarjetaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaActionPerformed
         Registrar_Tarjeta r = new Registrar_Tarjeta(Cliente, id);
+        //si el metodo Buscar usuario es falso no se abre la ventana de Registrar Tarjeta
         if(r.BuscarUsuario()==false){
             r.setVisible(false);
             this.setVisible(true);
         }
+        //en caso contrario, muestra la ventana registrar Tarjeta
         else{
             r.setVisible(true);
             this.setVisible(false);
@@ -239,7 +242,16 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ConsultaSMouseExited
 
     private void btn_ConsultaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultaSActionPerformed
-        // TODO add your handling code here:
+        Consultar_Saldo Cs = new Consultar_Saldo(Cliente, id);
+        if(Cs.BuscarUsuario()==false){
+            Cs.setVisible(false);
+            this.setVisible(true);
+        }
+        //en caso contrario, muestra la ventana registrar Tarjeta
+        else{
+            Cs.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btn_ConsultaSActionPerformed
 
     private void btn_EliminarTarjetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseEntered
@@ -251,7 +263,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EliminarTarjetaMouseExited
 
     private void btn_EliminarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaActionPerformed
-        // TODO add your handling code here:
+        Eliminar_Tarjeta e = new Eliminar_Tarjeta(Cliente, id);
+        if(e.BuscarUsuario()==false){
+            e.setVisible(false);
+            this.setVisible(true);
+        }
+        else{
+            e.setVisible(true);
+            this.setVisible(false);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_btn_EliminarTarjetaActionPerformed
 
     private void btn_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PMouseEntered
