@@ -2,7 +2,6 @@
 package formularios;
 
 import java.awt.Color;
-import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 public class Registrar_Usuario extends javax.swing.JFrame {

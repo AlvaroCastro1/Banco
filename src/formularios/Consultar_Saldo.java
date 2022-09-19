@@ -11,6 +11,7 @@ public class Consultar_Saldo extends javax.swing.JFrame {
     
     public Consultar_Saldo() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Consultar_Saldo(Cliente[] Cliente, int id) {
@@ -35,8 +36,7 @@ public class Consultar_Saldo extends javax.swing.JFrame {
     }
     //metodo para limpiar los datos 
      public void Limpiar(){
-        txt_NumTarjeta.setText("");
-        
+        txt_NumTarjeta.setText("");   
     }
 
     @SuppressWarnings("unchecked")
@@ -50,7 +50,12 @@ public class Consultar_Saldo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btn_ConsultaS = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -188,7 +193,14 @@ public class Consultar_Saldo extends javax.swing.JFrame {
                }
             }
         }
+        Limpiar();
     }//GEN-LAST:event_btn_ConsultaSActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Menu m = new Menu();
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

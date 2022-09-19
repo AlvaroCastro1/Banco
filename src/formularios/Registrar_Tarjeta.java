@@ -1,52 +1,32 @@
-
 package formularios;
 
 import javax.swing.JOptionPane;
 import java.awt.Color;
-import java.util.LinkedList;
-
 
 public class Registrar_Tarjeta extends javax.swing.JFrame {
-        Cliente[] Cliente = new Cliente[5000];
-        int id;
-        int marcador;
-    
-    public Registrar_Tarjeta( Cliente[] Cliente, int id) {
-        this.id=id;
-        this.Cliente= Cliente;
+
+    Cliente[] Cliente = new Cliente[5000];
+    int id;
+    int marcador;
+
+    public Registrar_Tarjeta(Cliente[] Cliente, int id) {
+        this.id = id;
+        this.Cliente = Cliente;
         initComponents();
         this.setLocationRelativeTo(null);
         et_LineaOsaldo.setVisible(false);
         txt_lienaOsaldo.setVisible(false);
-        
-        
-    }
-    public boolean BuscarUsuario(){
-        int BCuenta =Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la cuenta"));
-        int BContra=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la Contraseña"));
-        for(int i=0;i<id; i++){
-            if(BCuenta==Cliente[i].getNoCuenta() || BContra==Cliente[i].getContrasenia()){
-                JOptionPane.showMessageDialog(null, "Usuario y contraseña son correctos"); 
-                marcador=i;
-                return true;
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "El cliente o la contraseña son erroneos o no se encuentran, vuelvalo a intentar o registrese");
-            }
-        }
-            return false;
+
     }
 
     private Registrar_Tarjeta() {
         initComponents();
-        BuscarUsuario();
+
         this.setLocationRelativeTo(null);
         et_LineaOsaldo.setVisible(false);
         txt_lienaOsaldo.setVisible(false);
-      
-    }
-   
 
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -254,13 +234,13 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_limpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarMouseEntered
-        btn_limpiar.setBackground(new Color (98,153,122));
+        btn_limpiar.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_limpiarMouseEntered
 
     private void btn_limpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarMouseExited
-        btn_limpiar.setBackground(new Color (188,216,251));
+        btn_limpiar.setBackground(new Color(188, 216, 251));
     }//GEN-LAST:event_btn_limpiarMouseExited
-    public void Limpiar(){
+    public void Limpiar() {
         txt_fehcaSoli.setText("");
         txt_NumTarjeta.setText("");
         txt_FechaVenci.setText("");
@@ -275,31 +255,31 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_guardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseEntered
-        btn_guardar.setBackground(new Color (127,196,154));
+        btn_guardar.setBackground(new Color(127, 196, 154));
     }//GEN-LAST:event_btn_guardarMouseEntered
 
     private void btn_guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseExited
-        btn_guardar.setBackground(new Color (188,216,251));
+        btn_guardar.setBackground(new Color(188, 216, 251));
     }//GEN-LAST:event_btn_guardarMouseExited
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        if(txt_NumTarjeta.getText().isEmpty() || txt_FechaVenci.getText().isEmpty() ||txt_CVC.getText().isEmpty() || txt_Propietario.getText().isEmpty()
-            || cb_tipo.getSelectedItem() == "Seleccione" || txt_FechaVenci.getText().isEmpty() || txt_lienaOsaldo.getText().isEmpty() ){
+        if (txt_NumTarjeta.getText().isEmpty() || txt_FechaVenci.getText().isEmpty() || txt_CVC.getText().isEmpty() || txt_Propietario.getText().isEmpty()
+                || cb_tipo.getSelectedItem() == "Seleccione" || txt_FechaVenci.getText().isEmpty() || txt_lienaOsaldo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
-        }else{
-            if(cb_tipo.getSelectedItem()=="Credito"){
-                Credito c1 = new Credito(txt_NumTarjeta.getText(),txt_FechaVenci.getText(),txt_CVC.getText(),txt_fehcaSoli.getText(),txt_Propietario.getText(),
-                (String)cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
+        } else {
+            if (cb_tipo.getSelectedItem() == "Credito") {
+                Credito c1 = new Credito(txt_NumTarjeta.getText(), txt_FechaVenci.getText(), txt_CVC.getText(), txt_fehcaSoli.getText(), txt_Propietario.getText(),
+                        (String) cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
                 Cliente[marcador].LlenarTarjeta(c1);
                 System.out.println(Cliente[marcador].toString());
-  
+
             }
-            if(cb_tipo.getSelectedItem()=="Debito"){
-                 Debito d1 = new Debito(txt_NumTarjeta.getText(),txt_FechaVenci.getText(),txt_CVC.getText(),txt_fehcaSoli.getText(),txt_Propietario.getText(),
-                (String)cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
+            if (cb_tipo.getSelectedItem() == "Debito") {
+                Debito d1 = new Debito(txt_NumTarjeta.getText(), txt_FechaVenci.getText(), txt_CVC.getText(), txt_fehcaSoli.getText(), txt_Propietario.getText(),
+                        (String) cb_tipo.getSelectedItem(), Integer.parseInt(txt_lienaOsaldo.getText()));
                 Cliente[marcador].LlenarTarjeta(d1);
                 System.out.println(Cliente[marcador].toString());
-                
+
             }
             JOptionPane.showMessageDialog(null, "TA BIEN");
             Limpiar();
@@ -308,15 +288,15 @@ public class Registrar_Tarjeta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void cb_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoItemStateChanged
-        
-        if (cb_tipo.getSelectedItem()== "Credito") {
+
+        if (cb_tipo.getSelectedItem() == "Credito") {
             et_LineaOsaldo.setText("Linea de saldo:");
             et_LineaOsaldo.setVisible(true);
             txt_lienaOsaldo.setVisible(true);
-        }else if(cb_tipo.getSelectedItem()== "Seleccione"){
+        } else if (cb_tipo.getSelectedItem() == "Seleccione") {
             et_LineaOsaldo.setVisible(false);
             txt_lienaOsaldo.setVisible(false);
-        }else{
+        } else {
             et_LineaOsaldo.setText("Saldo inicial:");
             et_LineaOsaldo.setVisible(true);
             txt_lienaOsaldo.setVisible(true);

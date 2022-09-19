@@ -1,47 +1,47 @@
-
 package formularios;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class Eliminar_Tarjeta extends javax.swing.JFrame {
-    Cliente[] cliente= new Cliente[5000];
+
+    Cliente[] cliente = new Cliente[5000];
     int id;
-    int marcador; 
+    int marcador;
 
     public Eliminar_Tarjeta(Cliente[] cliente, int id) {
-        this.cliente=cliente;
-        this.id=id;
+        this.cliente = cliente;
+        this.id = id;
         initComponents();
-        this.setLocationRelativeTo(null);
     }
+
     //metodo que pide la cuenta y contraseña para buscar si coincide con alguna que se encuentre en el arreglo Cliente
-    public boolean BuscarUsuario(){
-        int BCuenta =Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la cuenta"));
-        int BContra=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la Contraseña"));
-        for(int i=0;i<id; i++){
+    public boolean BuscarUsuario() {
+        int BCuenta = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cuenta"));
+        int BContra = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la Contraseña"));
+        for (int i = 0; i < id; i++) {
             //si coinciden muestra un mensaje y guarda su posicion en la variable marcador para trabajar sonbre ese indice 
-            if(BCuenta==cliente[i].getNoCuenta() || BContra==cliente[i].getContrasenia()){
-                JOptionPane.showMessageDialog(null, "Usuario y contraseña son correctos"); 
-                marcador=i;
+            if (BCuenta == cliente[i].getNoCuenta() || BContra == cliente[i].getContrasenia()) {
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña son correctos");
+                marcador = i;
                 return true;
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "El cliente o la contraseña son erroneos o no se encuentran, vuelvalo a intentar o registrese");
             }
         }
-            return false;
+        return false;
     }
 
     private Eliminar_Tarjeta() {
         initComponents();
-    }
-    
-    //metodo para limpiar los datos
-    public void Limpiar(){
-        txt_NumTarjeta.setText("");
+        this.setLocationRelativeTo(null);
+
     }
 
+    //metodo para limpiar los datos
+    public void Limpiar() {
+        txt_NumTarjeta.setText("");
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,7 +54,7 @@ public class Eliminar_Tarjeta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btn_EliminarTarjeta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -162,11 +162,11 @@ public class Eliminar_Tarjeta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_limpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarMouseEntered
-         btn_limpiar.setBackground(new Color (204,204,255));
+        btn_limpiar.setBackground(new Color(204, 204, 255));
     }//GEN-LAST:event_btn_limpiarMouseEntered
 
     private void btn_limpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarMouseExited
-        btn_limpiar.setBackground(new Color (204,204,255));
+        btn_limpiar.setBackground(new Color(204, 204, 255));
     }//GEN-LAST:event_btn_limpiarMouseExited
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -174,39 +174,37 @@ public class Eliminar_Tarjeta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_EliminarTarjetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseEntered
-    btn_EliminarTarjeta.setBackground(new Color (204,204,255));    
+        btn_EliminarTarjeta.setBackground(new Color(204, 204, 255));
     }//GEN-LAST:event_btn_EliminarTarjetaMouseEntered
 
     private void btn_EliminarTarjetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseExited
-        btn_EliminarTarjeta.setBackground(new Color (204,204,255));
+        btn_EliminarTarjeta.setBackground(new Color(204, 204, 255));
     }//GEN-LAST:event_btn_EliminarTarjetaMouseExited
 
     private void btn_EliminarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaActionPerformed
-        if(txt_NumTarjeta.getText()==""){
+        if (txt_NumTarjeta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "LLENA TODOS LOS CAMPOS :/");
-        }
-        else{
+        } else {
             String encontrado = null;
-            for(int i=0;i<10;i++){
-               if(cliente[marcador].getNoTarjeta(i).equals(txt_NumTarjeta.getText())){
-                    if(cliente[marcador].getTipo()=="Credito"){
+            for (int i = 0; i < 10; i++) {
+                if (cliente[marcador].getNoTarjeta(i).equals(txt_NumTarjeta.getText())) {
+                    if (cliente[marcador].getTipo() == "Credito") {
                         cliente[marcador].Cobrar(i, cliente[marcador].getLienaOsaldo(i));
                         cliente[marcador].BorrarTarjeta(i);
-                        encontrado="Tarjeta borrada";
-                        break; 
+                        encontrado = "Tarjeta borrada";
+                        break;
                     }
-                    if(cliente[marcador].getTipo()=="Debito"){
-                        if(cliente[marcador].getDeuda(i)==0){
+                    if (cliente[marcador].getTipo() == "Debito") {
+                        if (cliente[marcador].getDeuda(i) == 0) {
                             cliente[marcador].BorrarTarjeta(i);
-                            encontrado="Tarjeta borrada";
-                            break; 
+                            encontrado = "Tarjeta borrada";
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se puede borrar su tarjeta, tiene una deuda de: " + cliente[marcador].getDeuda(i));
                         }
-                        else{
-                            JOptionPane.showMessageDialog(null, "No se puede borrar su tarjeta, tiene una deuda de: "+cliente[marcador].getDeuda(i));
-                        }
-                    }    
-               }
-               encontrado="No existe la tarjeta, revisa si esta bien escrito el numero de tarjeta";
+                    }
+                }
+                encontrado = "No existe la tarjeta, revisa si esta bien escrito el numero de tarjeta";
             }
             JOptionPane.showMessageDialog(null, "Ta bien");
             JOptionPane.showMessageDialog(null, encontrado);
@@ -216,7 +214,7 @@ public class Eliminar_Tarjeta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EliminarTarjetaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Menu m = new Menu(cliente, id);
+        Menu m = new Menu();
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_formWindowClosing

@@ -16,8 +16,8 @@ public class Cuenta {
         return contrasenia;
     }
 
-    public void setContrasenia(int contraseña) {
-        this.contrasenia = contraseña;
+    public void setContrasenia(int contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public int getNoCuenta() {

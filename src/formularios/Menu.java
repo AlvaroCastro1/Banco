@@ -1,26 +1,30 @@
-
 package formularios;
 
 import java.awt.Color;
-import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
+
     //arreglo donde se guardan los clientes
-    Cliente[] Cliente= new Cliente[5000];
+    Cliente[] Cliente = new Cliente[5000];
     int id;
+
     //constructor que recibe un arreglo de clientes y un indice
     public Menu(Cliente[] Cliente, int id) {
-        this.id= id;
-        this.Cliente= Cliente;
+        this.id = id;
+        this.Cliente = Cliente;
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    public void GuardaClientes() {
+        Registrar_Usuario r = new Registrar_Usuario(Cliente, id);
     }
 
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,7 +128,7 @@ public class Menu extends javax.swing.JFrame {
 
         btn_P.setBackground(new java.awt.Color(255, 221, 140));
         btn_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/976604-appliances-cell-phone-cellphone-mobile-mobilephone-phone-smartphone_106569.png"))); // NOI18N
-        btn_P.setText("Pendiente");
+        btn_P.setText("Recarga");
         btn_P.setBorderPainted(false);
         btn_P.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_P.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,11 +202,11 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_UserNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_UserNuevoMouseEntered
-        btn_UserNuevo.setBackground(new Color (98,153,122));
+        btn_UserNuevo.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_UserNuevoMouseEntered
 
     private void btn_UserNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_UserNuevoMouseExited
-        btn_UserNuevo.setBackground(new Color (255,221,140));
+        btn_UserNuevo.setBackground(new Color(255, 221, 140));
     }//GEN-LAST:event_btn_UserNuevoMouseExited
 
     private void btn_UserNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UserNuevoActionPerformed
@@ -212,78 +216,90 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_UserNuevoActionPerformed
 
     private void btn_TarjetaNuevaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaMouseEntered
-        btn_TarjetaNueva.setBackground(new Color (98,153,122));
+        btn_TarjetaNueva.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_TarjetaNuevaMouseEntered
 
     private void btn_TarjetaNuevaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaMouseExited
-        btn_TarjetaNueva.setBackground(new Color (255,221,140));
+        btn_TarjetaNueva.setBackground(new Color(255, 221, 140));
     }//GEN-LAST:event_btn_TarjetaNuevaMouseExited
 
     private void btn_TarjetaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TarjetaNuevaActionPerformed
         Registrar_Tarjeta r = new Registrar_Tarjeta(Cliente, id);
+        Busqueda b = new Busqueda(Cliente, id);
         //si el metodo Buscar usuario es falso no se abre la ventana de Registrar Tarjeta
-        if(r.BuscarUsuario()==false){
+        if (b.BuscarUsuario() == false) {
             r.setVisible(false);
             this.setVisible(true);
-        }
-        //en caso contrario, muestra la ventana registrar Tarjeta
-        else{
+        } //en caso contrario, muestra la ventana registrar Tarjeta
+        else {
             r.setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btn_TarjetaNuevaActionPerformed
 
     private void btn_ConsultaSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultaSMouseEntered
-        btn_ConsultaS.setBackground(new Color (98,153,122));
+        btn_ConsultaS.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_ConsultaSMouseEntered
 
     private void btn_ConsultaSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultaSMouseExited
-        btn_ConsultaS.setBackground(new Color (255,221,140));
+        btn_ConsultaS.setBackground(new Color(255, 221, 140));
     }//GEN-LAST:event_btn_ConsultaSMouseExited
 
     private void btn_ConsultaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultaSActionPerformed
         Consultar_Saldo Cs = new Consultar_Saldo(Cliente, id);
-        if(Cs.BuscarUsuario()==false){
+        Busqueda b = new Busqueda(Cliente, id);
+        //si el metodo Buscar usuario es falso no se abre la ventana de Registrar Tarjeta
+        if (b.BuscarTarjeta() == false) {
             Cs.setVisible(false);
             this.setVisible(true);
-        }
-        //en caso contrario, muestra la ventana registrar Tarjeta
-        else{
+        } //en caso contrario, muestra la ventana
+        else {
+            //validar una tarjeta
             Cs.setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btn_ConsultaSActionPerformed
 
     private void btn_EliminarTarjetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseEntered
-        btn_EliminarTarjeta.setBackground(new Color (98,153,122));
+        btn_EliminarTarjeta.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_EliminarTarjetaMouseEntered
 
     private void btn_EliminarTarjetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaMouseExited
-        btn_EliminarTarjeta.setBackground(new Color (255,221,140));
+        btn_EliminarTarjeta.setBackground(new Color(255, 221, 140));
     }//GEN-LAST:event_btn_EliminarTarjetaMouseExited
 
     private void btn_EliminarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarTarjetaActionPerformed
         Eliminar_Tarjeta e = new Eliminar_Tarjeta(Cliente, id);
-        if(e.BuscarUsuario()==false){
+        if (e.BuscarUsuario() == false) {
             e.setVisible(false);
             this.setVisible(true);
-        }
-        else{
+        } else {
             e.setVisible(true);
             this.setVisible(false);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btn_EliminarTarjetaActionPerformed
 
     private void btn_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PMouseEntered
-        btn_P.setBackground(new Color (98,153,122));
+        btn_P.setBackground(new Color(98, 153, 122));
     }//GEN-LAST:event_btn_PMouseEntered
 
     private void btn_PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PMouseExited
-        btn_P.setBackground(new Color (255,221,140));
+        btn_P.setBackground(new Color(255, 221, 140));
     }//GEN-LAST:event_btn_PMouseExited
 
     private void btn_PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PActionPerformed
-        // TODO add your handling code here:
+        RecargarSaldo r = new RecargarSaldo(Cliente, id);
+        Busqueda b = new Busqueda(Cliente, id);
+        //si el metodo Buscar usuario es falso no se abre la ventana de Registrar Tarjeta
+        if (b.BuscarTarjeta() == false) {
+            r.setVisible(false);
+            this.setVisible(true);
+        } //en caso contrario, muestra la ventana
+        else {
+            //validar una tarjeta
+            r.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btn_PActionPerformed
 
     /**
